@@ -2,7 +2,7 @@
 
 ## Book 1 
 
-[Learning JavaScript Data Structures and Algorithms - 1th ed.](https://www.amazon.com/Learning-JavaScript-Data-Structures-Algorithms/dp/1788623878)
+[Learning JavaScript Data Structures and Algorithms - 3rd ed.](https://www.amazon.com/Learning-JavaScript-Data-Structures-Algorithms/dp/1788623878)
 
 Files: 3 - 15. 
 
