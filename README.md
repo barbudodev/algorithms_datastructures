@@ -1,4 +1,4 @@
-# Books to learn Data Structures and Algorithms
+# Resources to learn Data Structures and Algorithms
 
 ## Book 1 
 
