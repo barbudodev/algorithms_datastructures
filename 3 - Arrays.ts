@@ -21,8 +21,11 @@ daysOfWeek = [
 ];
 
 // array iteration
-for (let i = 0; i < daysOfWeek.length; i++) {
+// @ts-ignore
+let i = 0;
+while (i < daysOfWeek.length) {
   console.log(daysOfWeek[i]);
+  i++;
 }
 
 // first 20 numbers of fibonacci sequence
@@ -39,7 +42,6 @@ for (let i = 1; i < fibonacci.length; i++) {
 }
 
 // adding numbers to an array
-
 //@ts-ignore
 const numbers: number[] = [0, 1, 2, 3, 4, 5];
 numbers[numbers.length] = 6;
@@ -49,30 +51,22 @@ numbers.push(7);
 numbers.push(8, 9, 10);
 
 // adding element in first position
+
+// insertFirstPosition, is used to insert a value at the first position of an array.
+// It takes an array and a value as parameters.
+// The function starts by initializing a variable "i" with the length of the array.
+// Then, it enters a while loop that continues as long as "i" is greater than or equal to 0.
+// Inside the loop, it shifts each element one position to the right,
+// effectively making room for the new value.
+// Finally, it assigns the given value to the first position of the array.
 function insertFirstPosition<T>(array: T[], value: T): void {
-  // Declare a function named "insertFirstPosition" that takes in two parameters:
-  // 1. "array" - an array of type T (generic type)
-  // 2. "value" - a value of type T (generic type)
-
   let i = array.length;
-  // Declare a variable "i" and initialize it with the length of the array.
-  // This will be used as an index to iterate through the array.
-
   while (i >= 0) {
-    // Start a while loop that continues as long as "i" is greater than or equal to 0.
-
     array[i] = array[i - 1];
-    // Assign the value of the element at index "i - 1" to the element at index "i".
-    // This effectively shifts all elements in the array to the right by one position.
-
     i--;
-    // Decrement the value of "i" by 1 in each iteration.
-    // This moves the loop closer to the base case where "i" becomes -1 and the loop terminates.
   }
 
   array[0] = value;
-  // Assign the value parameter to the first element of the array.
-  // This effectively inserts the given value at the beginning of the array.
 }
 
 insertFirstPosition(numbers, -1);
@@ -89,15 +83,17 @@ while (i < numbers.length) {
   i++;
 }
 
+// This code defines a new method called "reIndex" on the Array prototype.
+// The goal of this method is to remove any undefined elements from an array
+// and return a new array with the remaining elements.
+// It achieves this by iterating over the input array and pushing non-undefined
+// elements into a new array called "newArray".
+// Finally, it returns the "newArray" with the reindexed elements.
 // @ts-ignore
 Array.prototype.reIndex = function (myArray) {
-  // Create an empty array to store the non-undefined elements.
   const newArray = [];
-  // Declare a variable "i" and initialize it with 0.
   let i = 0;
-  // Start a while loop that continues as long as "i" is less than the length of "myArray".
   while (i < myArray.length) {
-    // Check if the element at index "i" is not undefined.
     if (myArray[i] !== undefined) {
       // @ts-ignore
       newArray.push(myArray[i]);
@@ -110,17 +106,17 @@ Array.prototype.reIndex = function (myArray) {
 // remove from first position using reIndex
 // @ts-ignore
 
-// Add a new method to the Array prototype called "removeFirstPosition".
+// This code defines a new method called "removeFirstPosition" on the Array prototype.
+// The goal of this method is to remove the element at the first position of an array.
+// It achieves this by shifting each element one position to the left,
+// effectively removing the element at index 0.
+// Finally, it returns the modified array with the first element removed.
 Array.prototype.removeFirstPosition = function () {
   let i = 0;
-  // Start a while loop that continues as long as "i" is less than the length of the array.
   while (i < this.length) {
-    // Move each element one position to the left,
-    // effectively removing the element at the first position.
     this[i] = this[i + 1];
     i++;
   }
-  // Return the array after removing the first position.
   return this.reIndex(this);
 };
 
@@ -130,6 +126,13 @@ const avgTempDay2: number[] = [81, 79, 75, 75, 73, 72];
 const avgTemp: number[][] = [avgTempDay1, avgTempDay2];
 
 // iteration over bidimensional arrays
+// This code defines a function called "printMatrix" that takes a 2D matrix as input.
+// The goal of this function is to iterate over each element in the matrix and print it.
+// It achieves this by using nested while loops to iterate over the rows and columns of the matrix.
+// Inside the inner loop, it accesses each element of the matrix using the row and column indices,
+// and then prints the element using the console.log() function.
+// The outer loop is responsible for iterating over the rows, while the inner loop iterates over the columns.
+// This allows the function to print each element of the matrix in a row-by-row fashion.
 function printMatrix(matrix: number[][]): void {
   let row = 0;
   while (row < matrix.length) {
@@ -148,26 +151,12 @@ printMatrix(avgTemp);
 const matrix: number[][][] = [];
 
 //@ts-ignore
-let row = 0;
-while (row < 3) {
-  // Create an empty array at the current row index
-  matrix[row] = [];
-  let column = 0;
-  while (column < 3) {
-    // Create an empty array at the current column index within the current row
-    matrix[row][column] = [];
-    let depth = 0;
-    while (depth < 3) {
-      // Assign the sum of row, column, and depth to the current position within the 3D matrix
-      matrix[row][column][depth] = row + column + depth;
-      depth++;
-    }
-    column++;
-  }
-  row++;
-}
-
-//@ts-ignore
+// This code initializes a 3D matrix by populating it with values
+// that are the sum of the row, column, and depth indices.
+// It achieves this by using nested while loops to iterate over the rows, columns,
+// and depths of the matrix.
+// Inside the innermost loop, it assigns the sum of the indices to the corresponding
+// element of the matrix.
 let row = 0;
 while (row < 3) {
   matrix[row] = [];
@@ -185,14 +174,36 @@ while (row < 3) {
 }
 
 //@ts-ignore
-// Iterate over the elements of the 3D matrix
+let row = 0;
+while (row < 3) {
+  matrix[row] = [];
+  let column = 0;
+  while (column < 3) {
+    matrix[row][column] = [];
+    let depth = 0;
+    while (depth < 3) {
+      matrix[row][column][depth] = row + column + depth;
+      depth++;
+    }
+    column++;
+  }
+  row++;
+}
+
+//@ts-ignore
+// This code snippet iterates over the elements of a 3D matrix.
+// It uses nested while loops to iterate over the
+// rows, columns, and depths of the matrix.
+// Inside the innermost loop, it accesses each element of the matrix using the
+// row, column, and depth indices,
+// and then prints the element using the console.log() function.
+// The goal of this code is to display each element of the 3D matrix.
 let row = 0;
 while (row < matrix.length) {
   let column = 0;
   while (column < matrix[row].length) {
     let depth = 0;
     while (depth < matrix[row][column].length) {
-      // Print the value at the current position within the 3D matrix
       console.log(matrix[row][column][depth]);
       depth++;
     }
